@@ -2,6 +2,8 @@ This is a simple project where you can register products along with their catego
 
 The database is called "bdtests"
 
+Run "npm i" on console
+
 To run it, just type "npm test" on console
 
 Used in this project:
