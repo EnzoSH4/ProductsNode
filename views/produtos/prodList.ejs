@@ -1,0 +1,48 @@
+<%- include ("../partials/header.ejs") %>
+<div class="container">
+    <hr/>
+    <h1>Listar Produtos</h1>
+    <a class="btn btn-success" href="/cadastrarProduto">Cadastrar produto</a>
+    <a class="btn btn-primary" href="/">Home</a>
+    <hr/>
+    <table class="table table-bordered table-striped">
+    
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Categoria</th>
+                <th>Preço</th>
+                <th>Ação</th></ht>
+            </tr>
+        </thead>
+        <tbody>
+            <% produto.forEach((prod) => { %>
+            <tr>
+                <th><%= prod.id %></th>
+                <th><%= prod.nome %></th>
+                <th><%= prod.categoria %></th>
+                <th><a style="color: green;">R$</a><%= prod.preco %></th>
+                <th><button class="btn btn-danger" data-id="<%= prod.id %>">Excluir</button></th>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>
+<script>
+    $(document).on('click', '.btn-danger', function(){
+        const id = $(this).data("id")
+        console.log(id)
+        
+        $.ajax({
+            url: '/excluirProd',
+            type: 'POST',
+            data: {id: id},
+            success: function(response){
+                alert('Produto excluído com sucesso!')
+                location.reload();
+            }
+        })
+            
+    })
+</script>

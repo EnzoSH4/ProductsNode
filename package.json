@@ -1,0 +1,21 @@
+{
+  "name": "avaliacao01",
+  "version": "1.0.0",
+  "description": "evandro acredite no meu potencial",
+  "main": "index.js",
+  "scripts": {
+    "test": "\"node --watch index.js\""
+  },
+  "author": "Enzo de Souza Hingst 354",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "bootstrap": "^5.3.3",
+    "ejs": "^3.1.10",
+    "ejs-lint": "^2.0.0",
+    "express": "^4.19.2",
+    "mysql2": "^3.11.0",
+    "sequelize": "^6.37.3",
+    "slug": "^9.1.0"
+  }
+}

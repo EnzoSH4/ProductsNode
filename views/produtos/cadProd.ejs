@@ -1,0 +1,60 @@
+<%-include ("../partials/header.ejs") %>
+<div class="container">
+    <hr>
+    <div aria-live="polite" aria-atomic="true" class="position-relative">
+        <div id="toast-container" class="toast-container position-fixed top-0 end-0 p-3"></div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h2>Cadastro de Produto</h2>
+        </div>
+        <div class="card-body">
+            <form id="productForm" method="POST" action="/salvaProd">
+                Nome<br>
+                <input id="nome" class="form-control" type="text" name="nome" placeholder="Nome do produto..."><br>
+                Categoria<br>
+                <input id="categoria" class="form-control" type="text" name="categoria" placeholder="Categoria do produto..."><br>
+                Preço do Produto<br>
+                <input id="precoProduto" class="form-control" type="number" name="precoProduto" placeholder="Preço do produto..." step="0.01"><br>
+                <button id="submitBtn" class="btn btn-success">Cadastrar</button>
+                <a class="btn btn-primary" href="/">Home</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById("productForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const nome = document.getElementById("nome").value.trim();
+        const categoria = document.getElementById("categoria").value.trim();
+        const preco = document.getElementById("precoProduto").value.trim();
+
+        if (!nome || !categoria || !preco) {
+            showToast("Todos os campos devem ser preenchidos.", "danger");
+            return;
+        }
+        if (isNaN(preco) || parseFloat(preco) <= 0) {
+            showToast("O preço deve ser um número válido e maior que zero.", "danger");
+            return;
+        }
+
+        this.submit();
+    });
+
+    function showToast(message, type) {
+        const toastContainer = document.getElementById("toast-container");
+        const toast = document.createElement("div");
+        toast.className = `toast align-items-center text-bg-${type} border-0 show`;
+        toast.role = "alert";
+        toast.innerHTML = `
+            <div class="d-flex">
+                <div class="toast-body">${message}</div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        `;
+        toastContainer.appendChild(toast);
+    }
+</script>

@@ -1,0 +1,20 @@
+.btn{
+    transition: transform 0.3s ease-out !important;
+}
+.btn:hover{
+    transform: scale(1.05) !important;
+}
+
+.btnW {
+    width: fit-content !important;
+    margin: 10px;
+}
+
+.navc{
+    margin-bottom: 25px;
+}
+
+.nd{
+    height: 125px; 
+    background-color: #007bff;
+}
